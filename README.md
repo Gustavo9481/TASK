@@ -1,5 +1,3 @@
-
-
 <div style="text-align:center">
 <img src="logo_task.svg" alt="Calculadora" width="100"/>
 </div>

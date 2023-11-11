@@ -1,4 +1,8 @@
-""" ------------------------------------------------- TASK  | base de datos """
+""" ----------------------------------------------- TASK   |  base de datos """
+"""
+Conexión a base de datos 'task.db'
+Creación de 'tabla_task' que contiene las tareas
+"""
 
 import sqlite3
 

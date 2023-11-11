@@ -1,4 +1,7 @@
-
+""" ------------------------------------------------- TASK   |  Clase Tarea """
+"""
+Clase creadora de Tareas
+"""
 
 
 class Tarea:

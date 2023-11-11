@@ -1,0 +1,48 @@
+
+
+        def check(id):
+            def marcado():
+                tarea = cursor.execute("SELECT * FROM tabla_tareas WHERE ID = ?", (id,)).fetchone()
+                cursor.execute("UPDATE tabla_tareas SET STATUS = ? WHERE ID = ?", (not tarea[2], id))
+                conexion.commit()
+                renderizar()
+            return marcado
+
+
+        def remove(id):
+            def remove1():
+                cursor.execute("DELETE FROM tabla_tareas WHERE ID = ?", (id, ))
+                conexion.commit()
+                renderizar()
+            return remove1
+
+
+        def renderizar():
+            global completado
+            global color
+            rows = cursor.execute("SELECT * FROM tabla_tareas").fetchall() # genera lista de tuplas
+            for widget in self.frame.winfo_children():  # elimina los elementos de la pantalla 
+                widget.destroy()
+            for i in range(0, len(rows)):
+                ID = rows[i][0]
+                STATUS = rows[i][2] # en la tupla indice 3
+                DESCRIPCION = rows[i][1]
+                color = '#8E8E99' if completado else '#FFFFFF'
+                self.l = Checkbutton(self.frame, text=DESCRIPCION, fg=color, width=60, anchor='w', bg='#001D3D', command=check(ID))
+                self.l.grid(row=i, column=0, sticky='w')
+                self.be = Button(self.frame, text='⌫', bg='#001D3D', fg='white', bd=0, padx=5, command=remove(id))
+                self.be.grid(row=i, column=1)
+                self.l.select() if completado else self.l.deselect()
+
+
+        # agregar nueva tarea ----- add a new task -----
+        def nueva(self):
+            tarea = self.e.get()
+            if tarea:
+                cursor.execute("""
+                    INSERT INTO tabla_tareas (DESCRIPCION, STATUS) VALUES (?,?)""", (tarea, "pendiente"))
+                conexion.commit()
+                self.e.delete(0, END)
+                renderizar()
+            else:
+                pass

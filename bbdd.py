@@ -1,6 +1,6 @@
 """ ----------------------------------------------- TASK   |  base de datos """
 """
-Conexión a base de datos 'task.db'
+Conexión a base de datos 'task.bd'
 Creación de 'tabla_task' que contiene las tareas
 """
 
@@ -12,7 +12,7 @@ import sqlite3
 # esquema de la tabla:
 # |  ID  |  DESCRIPCION  | STATUS  |
 
-conexion = sqlite3.connect("task.db") 
+conexion = sqlite3.connect("task.bd") 
 
 def crear_tabla(conexion):
     cursor = conexion.cursor()

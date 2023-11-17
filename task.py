@@ -78,7 +78,8 @@ def renderizar():
         bg=BACKGROUND, 
         fg=FOREGROUND, 
         bd=0, 
-        padx=5, 
+        padx=5,
+        highlightthickness=0,
         command=check(n)
         )
 
@@ -89,7 +90,8 @@ def renderizar():
         bg=BACKGROUND, 
         fg=FOREGROUND,  
         bd=0, 
-        padx=5, 
+        padx=5,
+        highlightthickness=0,
         command=remove1(n)
         )
     
